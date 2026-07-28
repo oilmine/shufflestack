@@ -8,18 +8,22 @@ def play_hc()
   until deck.empty?
     pl_card = deck.shift
     pc_card = deck.shift
+    puts ""
     puts "Your card: " + pl_card[0]
     puts "PC's card: " + pc_card[0]
     puts ""
     if (pl_card[1] > pc_card[1])
       pl_score = pl_score + 1
       puts "You won the round!"
+      puts ""
     else
       pc_score = pc_score + 1
       puts "Computer won the round!"
+      puts ""
     end
     puts ""
   end
+  puts ""
   puts ""
   puts "Your score: #{pl_score}"
   puts "PC's score: #{pc_score}"
@@ -28,5 +32,6 @@ def play_hc()
     print "You won the match!"
   else
     print "PC won the match!"
-  end  
+  end
+  pause
 end
