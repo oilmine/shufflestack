@@ -1,21 +1,21 @@
 require_relative "games/hol"
 require_relative "games/war"
 require_relative "games/hc"
+require_relative "games/blackjack"
 require_relative "libs/ui"
 
 title
 begin
   loop do
-    gm_lvl = ["war", "hol", "hc"]
+    gm_lvl = ["war", "hol", "hc", "blackjack"]
     clear
     title
-    puts "______________________________"
+    puts "\n______________________________________________"
     print "|   War   |   "
     print "HoL   |   "
     print "HC   |   "
-    puts ""
-    puts ""
-    print "CHOOSE THE GAMEMODE: "
+    print "Blackjack   |   "
+    print "\n\nCHOOSE THE GAMEMODE: "
     gm = gets.chomp.downcase
     puts ""
     if !gm_lvl.include?(gm)
@@ -29,6 +29,8 @@ begin
       play_hol()
     elsif gm == gm_lvl[2]
       play_hc()
+    elsif gm == gm_lvl[3]
+      play_blackjack()
     end
 end
 rescue Interrupt
