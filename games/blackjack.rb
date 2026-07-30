@@ -27,6 +27,7 @@ def pl_turn(deck, hand)
     print "(H)it or (S)tand: "
     choice = gets.chomp.downcase
     puts ""
+
     if choice == "h" || choice == "hit"
       hand << deck.shift
     elsif choice == "s" || choice == "stand"
@@ -49,20 +50,16 @@ def play_blackjack()
   pc_hand = deck.shift(2)
   pl_alive = pl_turn(deck, pl_hand)
   exit unless pl_alive
-
   puts "Dealer's turn.."
   puts ""
   puts "Dealer reveals: #{pc_hand.map { |card| card[0] }.join(" ")}"
   pc_turn(deck, pc_hand)
-
   puts ""
   show_hand("Your hand", pl_hand)
   puts ""
   show_hand("Dealer's final hand", pc_hand)
-
   pl_score = hand_value(pl_hand)
   pc_score = hand_value(pc_hand)
-
   puts ""
 
   if pc_score > 21

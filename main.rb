@@ -18,6 +18,7 @@ begin
     print "\n\nCHOOSE THE GAMEMODE: "
     gm = gets.chomp.downcase
     puts ""
+    
     if !gm_lvl.include?(gm)
       puts "Invalid gamemode."
       exit

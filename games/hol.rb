@@ -5,6 +5,7 @@ def play_hol()
   deck = create_deck
   card = deck.shift
   score = 0
+
   def logic(guess_var, n_card_var, card_var)
     if guess_var == "h"
       n_card_var[1] > card_var[1]
@@ -14,13 +15,15 @@ def play_hol()
       false
     end
   end
+
   until deck.empty? 
     puts "Current card: #{card[0]}"
     puts ""
     print "Is the next card (H)igher or (L)ower? : "
     guess = gets.chomp
     guess = guess.downcase
-    n_card = deck.shift 
+    n_card = deck.shift
+     
     if logic(guess, n_card, card)
       puts "You got it!"
       score = score + 1
@@ -33,4 +36,3 @@ def play_hol()
     end
   end
 end
-

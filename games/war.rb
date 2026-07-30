@@ -7,6 +7,7 @@ def play_war()
   pc_deck = deck
   wars = 0
   rounds = 0
+
   until pl_deck.empty? || pc_deck.empty?
     rounds = rounds + 1
     pl_card = pl_deck.shift
@@ -16,6 +17,7 @@ def play_war()
     puts "You: #{pl_card[0]}"
     puts "PC: #{pc_card[0]}"
     sleep(0.1)
+
     if pl_card[1] > pc_card[1]
       puts "You won!"
       pl_deck << pl_card << pc_card
@@ -36,6 +38,7 @@ def play_war()
       puts ""
       pl_war_card = pl_deck.shift
       pc_war_card = pc_deck.shift
+
       if pl_war_card.nil? || pc_war_card.nil?
         break
       end
@@ -43,6 +46,7 @@ def play_war()
       war_cards << pc_war_card
       puts "You: #{pl_war_card[0]}"
       puts "PC: #{pc_war_card[0]}"
+
       if pl_war_card[1] > pc_war_card[1]
         puts "You won the war!"
         pl_deck.concat(war_cards)
@@ -60,6 +64,7 @@ def play_war()
   puts "Game over!"
   puts "Rounds played: #{rounds}"
   puts "Wars: #{wars}"
+  
   if pl_deck.empty?
     puts "PC wins the game!"
   else

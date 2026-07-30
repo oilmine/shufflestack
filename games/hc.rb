@@ -5,6 +5,7 @@ def play_hc()
   deck = create_deck
   pl_score = 0
   pc_score = 0
+
   until deck.empty?
     pl_card = deck.shift
     pc_card = deck.shift
@@ -28,6 +29,7 @@ def play_hc()
   puts "Your score: #{pl_score}"
   puts "PC's score: #{pc_score}"
   puts ""
+
   if pl_score > pc_score
     print "You won the match!"
   else
