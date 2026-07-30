@@ -1,5 +1,6 @@
 require_relative "../libs/deck"
 require_relative "../libs/ui"
+require "colorize"
 
 def hand_value(hand)
   value = hand.map { |card| card[1] }.sum
@@ -16,11 +17,11 @@ def show_hand(name, hand)
   puts "Value: #{hand_value(hand)}"
 end
 
-def player_turn(deck, hand)
+def pl_turn(deck, hand)
   loop do
     show_hand("Your hand: ", hand)
     if hand_value(hand) > 21
-      puts "Bust!"
+      puts "You bust! Dealer wins!".red
       return false
     end
     print "(H)it or (S)tand: "
@@ -36,7 +37,7 @@ def player_turn(deck, hand)
   end
 end
 
-def dealer_turn(deck, hand)
+def pc_turn(deck, hand)
   while hand_value(hand) < 17
     hand << deck.shift
   end
@@ -46,29 +47,32 @@ def play_blackjack()
   deck = create_deck
   pl_hand = deck.shift(2)
   pc_hand = deck.shift(2)
-  player_alive = player_turn(deck, pl_hand)
-  exit unless player_alive
+  pl_alive = pl_turn(deck, pl_hand)
+  exit unless pl_alive
 
-  puts "\nDealer's turn.."
+  puts "Dealer's turn.."
+  puts ""
   puts "Dealer reveals: #{pc_hand.map { |card| card[0] }.join(" ")}"
-  dealer_turn(deck, pc_hand)
+  pc_turn(deck, pc_hand)
 
-  show_hand("\nYour hand: ", pl_hand)
-  show_hand("Dealer's final hand: ", pc_hand)
+  puts ""
+  show_hand("Your hand", pl_hand)
+  puts ""
+  show_hand("Dealer's final hand", pc_hand)
 
-  player_score = hand_value(pl_hand)
-  dealer_score = hand_value(pc_hand)
+  pl_score = hand_value(pl_hand)
+  pc_score = hand_value(pc_hand)
 
   puts ""
 
-  if dealer_score > 21
-    puts "Dealer busts! You won!"
-  elsif player_score > dealer_score
-    puts "You won!"
-  elsif dealer_score > player_score
-    puts "Dealer won!"
+  if pc_score > 21
+    puts "Dealer busts! You won!".green
+  elsif pl_score > pc_score
+    puts "You won!".green
+  elsif pc_score > pl_score
+    puts "Dealer won!".red
   else
-    puts "Push! It's a tie."
+    puts "Push! It's a tie.".blue
   end
   pause
 end
