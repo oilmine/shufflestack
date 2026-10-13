@@ -50,8 +50,7 @@ def play_blackjack()
   pc_hand = deck.shift(2)
   pl_alive = pl_turn(deck, pl_hand)
   exit unless pl_alive
-  puts "Dealer's turn.."
-  puts ""
+  puts "Dealer's turn..\n"
   puts "Dealer reveals: #{pc_hand.map { |card| card[0] }.join(" ")}"
   pc_turn(deck, pc_hand)
   puts ""

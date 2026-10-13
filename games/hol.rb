@@ -17,8 +17,7 @@ def play_hol()
   end
 
   until deck.empty? 
-    puts "Current card: #{card[0]}"
-    puts ""
+    puts "Current card: #{card[0]}\n"
     print "Is the next card (H)igher or (L)ower? : "
     guess = gets.chomp
     guess = guess.downcase

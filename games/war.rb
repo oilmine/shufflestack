@@ -12,8 +12,7 @@ def play_war()
     rounds = rounds + 1
     pl_card = pl_deck.shift
     pc_card = pc_deck.shift
-    puts ""
-    puts "Round #{rounds}"
+    puts "\nRound #{rounds}"
     puts "You: #{pl_card[0]}"
     puts "PC: #{pc_card[0]}"
     sleep(0.1)
@@ -57,8 +56,7 @@ def play_war()
         puts "Another war!"
       end
     end
-    puts ""
-    puts "Your cards: #{pl_deck.length}"
+    puts "\nYour cards: #{pl_deck.length}"
     puts "PC's cards: #{pc_deck.length}"
   end
   puts "Game over!"
@@ -66,9 +64,9 @@ def play_war()
   puts "Wars: #{wars}"
   
   if pl_deck.empty?
-    puts "PC wins the game!"
+    puts "PC wins the game!".red
   else
-    puts "You win the game!"
+    puts "You win the game!".green
   end
   pause
 end
